@@ -1,0 +1,45 @@
+package com.uniliver;
+
+import java.util.Iterator;
+import java.util.Optional;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
+import com.uniliver.dao.Employee;
+import com.uniliver.dao.EmployeeRepository;
+
+@SpringBootApplication
+public class Application {
+
+	public static void main(String[] args) {
+		ConfigurableApplicationContext run = SpringApplication.run(Application.class, args);
+		Employee e=new Employee();
+		e.setEmpId(1);
+		e.setEmpName("RajKumar");
+		e.setEmpsal(100000);
+		EmployeeRepository empRepo = run.getBean(EmployeeRepository.class);
+		empRepo.save(e);//it.
+		System.out.println(empRepo.count());
+		e.setEmpId(1);
+		e.setEmpName("venkatasiva");
+		e.setEmpsal(10000);//it returns long number.i.e->how many records are presented in table 
+		empRepo.save(e);
+		Iterable<Employee> all = empRepo.findAll();//it returns iterabale Obj of all records in a table of database.
+		Iterator<Employee> iterator = all.iterator();
+		while(iterator.hasNext())
+			System.out.println(iterator.next());
+		e.setEmpId(2);e.setEmpName("Jagan");e.setEmpsal(12300);
+		empRepo.save(e);
+		empRepo.delete(e);//it deletes employee Row in a database corresponding Employee Object values.
+		e.setEmpId(2);e.setEmpName("Jagan");e.setEmpsal(12300);
+		empRepo.save(e);
+		System.out.println(empRepo.existsById(1));//it return a boolean value based on the id having row in a database is there or not.
+		Optional<Employee> ope = empRepo.findById(2);
+		System.out.println(ope.get());
+		
+	}
+	
+
+}

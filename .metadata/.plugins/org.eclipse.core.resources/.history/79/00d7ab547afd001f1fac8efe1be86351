@@ -1,0 +1,23 @@
+package com.uniliver.dao;
+
+
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
+
+@Component
+public class OracleUserDao implements UserDao {
+
+	@Override
+	public void printUsers() {
+		System.out.println(this.getClass().getName());
+		System.out.println("Oracle database executed");
+
+	}
+
+	@Override
+	public void setUsers() {
+		System.out.println("Users Data inserted");
+		
+	}
+
+}

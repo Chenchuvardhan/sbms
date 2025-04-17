@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: 01-CircuitBreaker
+management:
+  endpoints:
+    web:
+     exposure:
+        include:   '*' 
+  endpoint:
+    health:
+      show-details: always
+  health:
+    circuitbreakers:
+      enabled: true
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+       registerHealthIndicator: true 
+       slidingWindowSize: 5
+       minimumNumberOfCalls: 3
+       permittedNumberOfCallsInHalfOpenState: 2
+       automaticTransitionFromOpenToHalfOpenEnabled: true
+       waitDurationInOpenState: 50s
+       failure-rate-threshold: 25

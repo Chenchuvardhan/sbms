@@ -1,0 +1,30 @@
+<html>
+
+<head>
+	<title>Employee</title>
+</head>
+
+<body>
+	<p th:text="${employees}"></p>
+	<h1>Employee Details</h1>
+	<table border="1">
+		<thead>
+			<tr>
+              <th>Id</th>
+			  <th>Name</th>
+			  <th>Salary</th>
+			  <th>Gender</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="employee:&{employees}">
+			<td <td="${employee.eid}"></td>
+			<td><th:text="${employee.ename}"></td>
+			<td th:text="${employee.esal}"></td>
+			<td th:text="${employee.gender}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+package com.rest.controler;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.rest.dao.Mobile;
+
+@org.springframework.web.bind.annotation.RestController
+public class FirstRestController {
+@GetMapping("/ssget")	
+public ResponseEntity<Mobile> getRecords(@RequestParam Integer id) {
+	return  new ResponseEntity<Mobile>(new Mobile(7726,"Realme",9999.00,"yellow"),HttpStatus.OK);
+	}
+@PostMapping("/save")
+public void insertRecord(Mobile mob){
+	System.out.println(mob);
+}
+}

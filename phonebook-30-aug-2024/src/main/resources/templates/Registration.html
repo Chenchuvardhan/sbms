@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-group input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        .form-group .error {
+            color: #e74c3c;
+            font-size: 0.875em;
+        }
+        .form-group .success {
+            color: #2ecc71;
+            font-size: 0.875em;
+        }
+        .submit-btn {
+            background-color: green;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        .submit-btn:hover {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2 style="color:black">Registration Form</h2>
+		<h4 th:text="${smsg}" style="color:green"></h4>
+		<h4 th:text="${advice}" style="color:green"></h4>
+		<h4 th:text="${emsg}" style="color:orangered"></h4>
+        <form id="registrationForm" th:action="@{/saveCustomer}" th:object="${customer}" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" th:field="*{customerName}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" th:field="*{customerEmail}" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" th:field="*{customerPassword}" required>
+            </div>
+            <div class="form-group">
+                <label for="mobilenumber">Mobile Number</label>
+                <input type="tel" id="mobilenumber" th:field="*{customerMobileNumber}" required pattern="[0-9]{10}">
+            </div>
+            <button type="submit" class="submit-btn">Register</button>
+			<h4>Are You registered already?&nbsp;&nbsp;&nbsp;<a th:href="@{/}">Log in</a></h4>
+        </form>
+    </div>
+</body>
+</html>

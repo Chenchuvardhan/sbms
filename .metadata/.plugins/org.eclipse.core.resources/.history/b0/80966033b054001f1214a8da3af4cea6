@@ -1,0 +1,39 @@
+package com.uniliver;
+
+import java.util.Iterator;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
+import com.uniliver.dao.Employee;
+import com.uniliver.dao.EmployeeRepository;
+
+@SpringBootApplication
+public class Application {
+
+	public static void main(String[] args) {
+		ConfigurableApplicationContext run = SpringApplication.run(Application.class, args);
+		Employee e=run.getBean(Employee.class);
+		e.setEmpId(1);
+		e.setEmpName("RajKumar");
+		e.setEmpsal(100000);
+		EmployeeRepository empRepo = run.getBean(EmployeeRepository.class);
+		empRepo.save(e);//it.
+		System.out.println(empRepo.count());
+		e.setEmpId(1);
+		e.setEmpName("venkatasiva");
+		e.setEmpsal(10000);//it returns long number.i.e->how many records are presented in table 
+		empRepo.save(e);
+		Iterable<Employee> all = empRepo.findAll();
+		Iterator<Employee> iterator = all.iterator();
+		while(iterator.hasNext())
+			System.out.println(iterator.next());
+		e.setEmpId(2);e.setEmpName("Jagan");e.setEmpsal(12300);
+		empRepo.save(e);
+		empRepo.delete(e);
+		empRepo.deleteAll();
+	}
+	
+
+}
