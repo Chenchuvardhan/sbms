@@ -10,5 +10,6 @@ public class DemoApplication {
 	ConfigurableApplicationContext context = SpringApplication.run(DemoApplication.class, args);
 	System.out.println(context.getClass().getName());
 	System.out.println(context.getBeanDefinitionCount());
+	System.out.println("Demo Application");
 	}
 }

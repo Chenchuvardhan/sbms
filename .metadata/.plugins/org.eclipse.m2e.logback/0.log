@@ -29262,3 +29262,6 @@ Caused by: com.google.inject.OutOfScopeException: Cannot access Key[type=org.apa
 	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:300)
 	at com.google.inject.internal.InjectorImpl$1.get(InjectorImpl.java:1101)
 	... 53 common frames omitted
+2026-11-16 10:31:06,199 [Worker-19: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2026-11-16 10:31:06,249 [Worker-19: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2026-11-16 10:31:06,260 [Worker-19: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\sbms-45\01-springApp\src\test\resources
