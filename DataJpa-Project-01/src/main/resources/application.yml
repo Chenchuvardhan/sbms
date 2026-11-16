@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: DataJpa-Project-01
+  datasource:
+    url: jdbc:mysql://localhost:3306/November_2026
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
