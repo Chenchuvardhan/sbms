@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
 import in.nareshit.entity.Employee;
 import in.nareshit.repo.EmployeeRepo;
@@ -35,9 +36,10 @@ public class DataJpaProject01Application {
 		//bean.getByAddress("Hyderabad").forEach(System.out::println);
 		//System.out.println(bean.getEmployeeBySalAndAddress(25000,"Hyderabad"));
 		//bean.getEmployeeGreaterThan(30000).forEach(System.out::println);
-		bean.getAllNamesAndAddresses().forEach(i->System.out.println(i[0]+" "+i[1]));
+		//bean.getAllNamesAndAddresses().forEach(i->System.out.println(i[0]+" "+i[1]));
 		Page<Employee> all = bean.findAll(PageRequest.of(0, 2));
 		all.forEach(System.out::println);
+		bean.findAll(Sort.by("salary")).forEach(System.out::println);
 		run.close();
 	}
 
